@@ -1,0 +1,63 @@
+
+<ion-header>
+  <ion-navbar>
+      <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Annuler</span>
+        <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf="action=='create'">Nouvelle maintenance</ion-title>
+    <ion-title *ngIf="action=='edit'">Naintenance</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list-header text-wrap >
+   <h2>Sous-système  {{systeme.nom}}</h2>
+  </ion-list-header>
+ <form #form="ngForm"  novalidate> 
+<ion-list  *ngIf="reparation " >
+  <ion-item >
+  <ion-label color="primary" floating>Date de maintenance</ion-label>
+  <ion-datetime 
+     displayFormat="DD/MM/YYYY"
+    pickerFormat="D MMM  YYYY"  
+     doneText="Terminé" cancelText="Annuler"
+    name="dateSave"
+     [(ngModel)]="reparation.dateSave"
+      #dateSave="ngModel">
+    </ion-datetime>
+</ion-item>
+  <ion-item >
+  <ion-label color="primary" floating>Kilométrage à la date</ion-label>
+    <ion-input [(ngModel)]="reparation.km" name="km" type="number"  placeholder=""  #km="ngModel"></ion-input> 
+  </ion-item>
+  <ion-item >
+  <ion-label color="primary" floating>Pièce</ion-label>
+    <ion-input [(ngModel)]="reparation.description" name="description" type="text" placeholder=" " #description="ngModel"></ion-input> 
+  </ion-item>  
+ <ion-item >
+<ion-label color="primary" floating>Coût des pièces ({{devise}})</ion-label>
+    <ion-input  [(ngModel)]="reparation.cout" name="cout" type="number" placeholder="" #cout="ngModel"></ion-input>
+  </ion-item> 
+  <ion-item>
+<ion-label color="primary" floating>Coût de la main d'oeuvre ({{devise}})</ion-label>
+    <ion-input  [(ngModel)]="reparation.coutMainOeuvre" name="coutMainOeuvre" type="number" placeholder="" #coutMainOeuvre="ngModel"></ion-input>
+  </ion-item> 
+  <ion-item >
+    <ion-textarea rows="3" [(ngModel)]="reparation.commentaires" name="commentaires" type="text" placeholder="Faites un commentaire" #commentaires="ngModel"></ion-textarea>
+  </ion-item>  
+</ion-list>
+   <div padding>
+  <button ion-button block  icon-right class="tangoAnimate quick tangoCentre" [disabled]="isInvalid() || submitted"   [ngClass]="setClass()" (click)="onSubmit()">
+    <span *ngIf="!submitted && action=='edit'" > Mettre à jour<ion-icon name="md-done-all"></ion-icon> </span>
+    <span *ngIf="!submitted && action=='create'" > Enregistrer la réparation<ion-icon name="md-done-all"></ion-icon> </span>
+     <ion-spinner [color]="spinnerColor" *ngIf="submitted"></ion-spinner>
+  </button>           
+  </div>
+ </form> 
+  <div padding center *ngIf="action=='edit'">
+  <button ion-button  outline block  color="danger" icon-right (click)="showConfirm()" [disabled]="submitted"> Supprimer la réparation<ion-icon name="ios-close-circle"></ion-icon></button>      
+  </div>
+
+</ion-content>

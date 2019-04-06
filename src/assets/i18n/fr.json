@@ -1,0 +1,206 @@
+{
+  "login":{
+      "login":"Se connecter",
+      "footer":{
+          "avevzvouscompte":"Vous n'avez pas encore de compte",
+          "inscrire":"Inscrivez-vous"
+      },
+      "saisiradressemailvalide":"Saisir une adresse e-mail valide !",
+      "saisirmodepassevalide":"Saisir un mot de passe",
+      "motdepasseoublie":"Mot de passe oublié"
+  },
+
+  "signup":{
+      "motdepasse":"MOT DE PASSE",
+      "saisiradressemail":"Saisir l'adresse e-mail avec laquelle vous souhaitez vous connectecter à votre compte.",
+      "adressemailinvalide":"Adresse e-mail invalide.",
+      "adressemail":"VOTRE ADRESSE E-MAIL",
+      "motdepasse624caracteres":"Mot de passe entre 6-24 caractères.",
+      "motpassecorrespondpas":"Les mots de passe ne correspondent pas.",
+      "nomcomplet":"NOM COMPLET",
+      "saisirnomcomplet":"Saisir votre nom complet.",
+      "nomcomplet624caracteres":"Votre nom complet entre 6-24 caractères.",
+      "terminer":"Terminer",
+      "footer":{
+            "avezvousuncompte":"Vous avez déja un compte",
+            "connctezvous":"Connectez-vous",
+            "retour":"Retourner",
+            "asectionprecedente":" à la section précedente."
+      }
+
+  },
+
+  "restPassword":{
+      "motdepasseoublie":"MOT DE PASSE OUBLIE",
+      "saisiradressemail":"Saisir l'adresse e-mail avec laquelle vous vous êtes enrégistré",
+      "reinitialiser":"Réinnitialiser",
+      "adressemailinvalide":"Adresse e-mail invalide.",
+      "votreadressemail":"Votre adresse mail.",
+       "connctezvous":"Connectez-vous"
+  },
+
+
+  "apropos":{
+      "apropos":"A propos",
+      "contacts":"Contacts",
+      "communautes":"Communautés"
+  },
+
+
+"editProfile":{
+    "parametres":"Paramètres",
+    "votrenom": "Votre nom complet",
+    "votrelangue":"Selectionner votre langue",
+    "votredevise":"Selectionner votre dévise ",
+    "telephone":"Votre numéro de télephone",
+    "adressemail":"Votre adresse mail",
+    "mettreajour":"Mettre à jour"
+
+},
+
+
+"home":{
+    "entretientpreventif":"Entretien préventif",
+    "distancerestante":"Distance restante",
+    "depassede":"Dépassée de",
+    "aucuneoperation":"Aucune opération enrégistrée",
+    "conseil":"Conseil",
+    "selectionnervehiculepourafficher":"Selectionnez un véhicule pour afficher les informations.",
+    "selectionnervehicule":"selectionner un véhicule"
+}
+,
+"visitePolice":{
+    "vousnavezaucunepolice":"Vous n'avez aucune police d'assurance enrégistrée.",
+    "enregistrerunepolice":"Enregistrer une assurance",
+    "policeassurance":"Police d'assurance",
+    "souscription":"Date de souscription",
+    "expiration":"Date d'expiration",
+    "dureevalidite":"Durée de validité",
+    "jours":"jours",
+    "expiree":"Expirée",
+    "renouveller":"Renouveller",
+    "vousnavezaucunevisite":"Vous n'avez aucune visite technique enrégistrée.",
+    "enregistrerunevisite":"Enregistrer une visite",
+    "visitetechnique":"Visite technique",
+    "datevisite":"Date de la visite",
+    "expiredans":"Expire dans",
+    "selectionnervehiculepourafficher":"Selectionnez un véhicule pour afficher les informations.",
+    "selectionnervehicule":"selectionner un véhicule"
+},
+
+"systemes":{
+    "lessoussystemes":"Les sous-systèmes",
+    "selectionnervehiculepourafficher":"Selectionnez un véhicule pour afficher les informations.",
+    "selectionnervehicule":"selectionner un véhicule"
+},
+
+"utilisation":{
+    "utilisationetcouts":"Utilisation & coûts",
+    "utilisationvehicule":"Utilisation du véhicule",
+    "chauffeur":"Chauffeur",
+    "nonestime":"Non estimé",
+    "couttotalmaintenance":"Coût total de maintenance",
+    "aucuncout":"Aucun côut",
+    "parametresvehicule":"Paramètres du véhicule",
+    "selectionnervehiculepourafficher":"Selectionnez un véhicule pour afficher les informations.",
+    "selectionnervehicule":"selectionner un véhicule"
+},
+
+"vehiculeCreate":{
+    "nouveauVehicule":" Nouveau vehicule",
+    "annuler":"Annuler",
+    "immatriculation":"Immatriculation",
+    "imatriculationinvalide":"Saisir un numéro d'immatriculation valide !",
+    "choisirmarque":"Choisir une marque",
+    "modeleetcouleur":"Modèle et couleur",
+    "datemiseencirculation":"Date de mise en circulation",
+    "terminer":"Terminer",
+    "conduitpar":"Vehicule conduit par",
+    "kilometrageorigine":"Kilométrage actuel",
+    "coutachat":"Coût à l'achat",
+    "mettreajour":"Mettre à jour",
+    "creervehicule":"Créer un véhicule",
+    "supprimervehicule":"Supprimer le véhicule"
+},
+
+"prevision":{
+     "derniereoperation":"Dernière operation",
+    "datederniere":"Date dernière opération",
+    "dureevie":"Durée de vie",
+    "prochaineoperation":"Prochaine opération",
+    "operation":"opération",
+    "distancerestante":"Distance restante",
+    "depassede":"Dépassée de",
+     "eneregistreruneoperation":"Enregistrer une opération",
+     "annuleroperation":"Annuler l'opération",
+     "vousnavezaucuneoperationpour":"Vous n'avez aucune opération enrégistrée pour"
+
+},
+
+"settings":{
+    "reglages":"Paramètres",
+    "sauvegarderdonnees":"Savegarder les données",
+    "vosdonneessontplussur":"Vos données sont plus  sûres.",
+    "sedeconnecter":"Se deconnecter"
+}
+
+,
+"tabs":{
+    "entretien":"Entretien",
+    "reparations":"Réparations",
+    "legislation":"Législation",
+    "utilisation":"Utilisation"
+},
+
+"visitePoliceCreate":{
+    "enregistrement":"Enrégistrement",
+    "annuler":"Annuler",
+    "policeassurance":"Police d'assurance",
+    "visitetechnique":"Visite technique",
+     "souscription":"Date de souscription",
+      "datevisite":"Date de la visite",
+      "coutassurance":"Coût de l'assurance",
+      "coutvisite":"Coût de la visite",
+      "creerpolice":"Enrégistrer la police",
+     "creervisite":"Enrégistrer la visite",
+     "unepolicest":"Une police d'assurance en cours de validité est obligatoire pour tous les véhicules.",
+     "unevisiteest":"Votre véhicule  doit passer régulierement des vistes techniques",
+     "mettreajour":"Mettre à jour"
+},
+
+"previsionCreate":{
+    "mettreajour":"Mettre à jour",
+    "dateoperation":"Date de l'opération",
+    "kilometrageadate":"Kilométrage à la date",
+    "dureevie":"Durée de vie (en KM)",
+    "coutoperation":"Coût de l'opération",
+    "enregistrer":"Enregistrer l'opération",
+    "supprimer":"Supprimer l'opération"
+},
+
+
+"reparationCreate":{
+    "nouvellemaintenance":"Nouvelle maintenance",
+    "maintenance":"Naintenance",
+     "annuler":"Annuler",
+    "soussysteme":"Sous-système",
+    "datedemaintenance":"Date de maintenance",
+    "pieceremplacee":"Pièce remplacée",
+    "coutpiece":"Coût des pièces",
+    "coutmainoeuvre":"Coût de la main d'oeuvre",
+    "enregistrer":"Enregistrer la réparation",
+     "mettreajour":"Mettre à jour",
+    "supprimer":"Supprimer la réparation"
+}
+,
+"reparationList":{
+    "historique":"Historique",
+    "remplacementde":"Remplacement de:",
+    "maindoeuvre":"Main d'oeuvre:",
+    "pieces":"pièces",
+    "vousnavezaucune":"Vous n'avez aucune réparation enrégistrée pour le système pour",
+    "enregistreruneoperation":"Enregistrer une réparation",
+    "uneseuleoperation":"une seule réparation",
+    "reparations":"réparations"
+}
+}

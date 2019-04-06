@@ -1,0 +1,7 @@
+{
+  "name": "centor",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

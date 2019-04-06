@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Recapitulatifs </ion-title>
+          <ion-buttons end>
+            <button ion-button (click)="dismiss(false)">
+              <ion-icon color="white" name="md-close"></ion-icon>
+            </button>
+          </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <accordion-list *ngFor="let vehicule of _vehicules"
+                  [displayed]="vehicule"
+                  textColor="#FFF"
+                  hasMargin="false"
+                  headerColor="#FFF" >
+  </accordion-list>
+</ion-content>

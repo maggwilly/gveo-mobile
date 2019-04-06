@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "283370136463",
+    "firebase_url": "https://geveo-d01fb.firebaseio.com",
+    "project_id": "geveo-d01fb",
+    "storage_bucket": "geveo-d01fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283370136463:android:8cae5d13772d40d4",
+        "android_client_info": {
+          "package_name": "com.gveoapp.mobile.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283370136463-vlefu1nn3fldf9kb6elgscgn46qqhhne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgTx3H_tqRZRemQHkrzy0dx7yO5wMpIlM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283370136463:android:a39387b30d420dea",
+        "android_client_info": {
+          "package_name": "com.ionicframework.gveomobile740053"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283370136463-vlefu1nn3fldf9kb6elgscgn46qqhhne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgTx3H_tqRZRemQHkrzy0dx7yO5wMpIlM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

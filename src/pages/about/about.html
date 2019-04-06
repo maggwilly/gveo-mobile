@@ -1,0 +1,48 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>A propos</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content  *ngIf="abaout">
+<ion-grid >
+<ion-row justify-content-center>
+<ion-col col-sm-12 col-xl-3 col-md-4 col-lg-6 >    
+  <div padding>
+     <div align-center>
+       <img [src]="abaout.imageUrl" >
+    </div> 
+      <p text-justify>
+      {{abaout.description}}
+    </p>
+  </div>
+       <ion-list   *ngIf="abaout.contact">
+      <ion-list-header>
+         Contacts
+       </ion-list-header>
+          <a *ngIf="abaout.contact.telephone" href="tel:{{abaout.contact.telephone}}" ion-item>
+                    <ion-icon  name="call" item-left></ion-icon>
+                    <h2>{{abaout.contact.telephone}}</h2>
+            </a>
+            <a *ngIf="abaout.contact.email" href="mailto:{{abaout.contact.email}}" ion-item>
+                    <ion-icon  name="mail" item-left></ion-icon>
+                    <h2>{{abaout.contact.email}}</h2>
+            </a> 
+             <ion-item  *ngIf="abaout.contact.whatsapp">
+                    <ion-icon  name="logo-whatsapp" item-left></ion-icon>
+                    <h2>{{abaout.contact.whatsapp}}</h2>
+            </ion-item>          
+     </ion-list>
+       <ion-list   *ngIf="abaout.communautes">
+       <ion-list-header>
+         Communautés
+       </ion-list-header>
+                  <a  *ngFor="let communaute of abaout.communautes" [href]="communaute.link" ion-item>
+                    <ion-icon  [name]="communaute.icon" item-left></ion-icon>
+                    <h2>{{communaute.titre}}</h2>
+                </a>         
+       </ion-list>
+     </ion-col>
+  </ion-row>
+</ion-grid>       
+</ion-content>

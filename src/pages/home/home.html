@@ -1,0 +1,32 @@
+<ion-header no-border no-shadow>
+  <header-component [text]="'Entretien préventif'" [displayed]="displayed" recapshow="true"></header-component>  
+</ion-header>
+<ion-content >
+<ion-list  *ngIf="displayed"> 
+   <ion-item *ngFor="let operation of operations" (click)="showPrevision(operation)" text-wrap last-reparation [displayed]="displayed" [operation]="operation">
+     <ion-avatar  item-left>
+      <img [src]="operation.thumburl" [alt]="">
+    </ion-avatar>
+    <h3><strong>{{operation.libele}}</strong></h3>
+    <p class="ion-note">{{operation.operation}}</p>
+    <p *ngIf="operation.lastReparation">
+      <small *ngIf="operation.kmrt >= 0">Distance restante: {{operation.kmrt}} km</small>
+      <small *ngIf="operation.kmrt < 0">Dépassée de: {{-1*(operation.kmrt)}} km</small>
+      </p>
+      <ion-spinner name="dots" item-right *ngIf="!operation.loaded"></ion-spinner>
+      <ion-icon name="ios-warning-outline" color="orange"  item-right *ngIf="operation.loaded&&operation.kmrt>0 && operation.kmrt<operation.km_alerte"></ion-icon>   
+      <ion-icon name="md-warning" item-right *ngIf="operation.loaded&&operation.kmrt<0" color="danger"></ion-icon>
+      <span *ngIf="!operation.lastReparation">Aucune opération enrégistrée </span> 
+      <p><small color="primary">Conseil: {{operation.shortConseil}}</small></p> 
+  </ion-item> 
+</ion-list>
+<ion-list *ngIf="!displayed" class="empty" >
+<ion-item text-wrap no-lines>
+   <p><ion-icon color="light" name="md-list"></ion-icon></p>
+    <ion-note item-center>Selectionnez un véhicule pour afficher les informations.</ion-note>
+ </ion-item>
+ <div padding>
+  <button ion-button  icon-right menuToggle>selectionner un véhicule<ion-icon name="ios-car"></ion-icon></button>      
+ </div> 
+ </ion-list>
+</ion-content>

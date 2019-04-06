@@ -1,0 +1,57 @@
+<ion-split-pane  when="md" >
+<ion-menu  [content]="content" id="menu-material" type="reveal"  [hidden]="!authinfo">
+  <ion-header no-border no-shadow>
+    <ion-navbar>
+       <ion-title>GVEO</ion-title>
+       <ion-buttons end>
+        <button ion-button  icon-only  (click)="setRoot('settings')">
+            <ion-icon  name="settings"></ion-icon>
+        </button>
+        <button ion-button (click)="openStat()"icon-only  showWhen="core"  clear>
+            <ion-icon name="ios-pie-outline"></ion-icon>
+          </button>
+          <button ion-button (click)="openRecap()" icon-only showWhen="core"  clear >
+            <ion-icon name="md-clipboard"></ion-icon>
+            <ion-badge color="danger"></ion-badge>
+          </button>
+      </ion-buttons>        
+    </ion-navbar>
+  </ion-header>
+ <ion-content >
+    <div showWhen="core" padding>
+        <br><br><br>
+    </div> 
+<ion-list  *ngIf="_vehicules && _vehicules.length>0" padding-top> 
+   
+  
+     <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="search()"
+                   placeholder="rechercher un véhicule">
+    </ion-searchbar>   
+   <ion-item *ngFor="let vehicule of _vehicules" (click)="select(vehicule)" text-wrap [hidden]="vehicule.hide" last-releve [displayed]="vehicule">
+    <div item-left>
+       <img [src]="vehicule.marque.logo" [alt]="">
+    </div>
+    <h4>{{vehicule.matricule|uppercase}}</h4>
+    <p>{{vehicule.chauffeur}}</p> 
+   <ion-badge *ngIf="isReleveExpired(vehicule)" color="danger" item-right>!</ion-badge>
+  </ion-item> 
+</ion-list>  
+<ion-list *ngIf="!_vehicules || _vehicules.length==0" class="empty" >
+<ion-item text-wrap no-lines>
+   <p><ion-icon color="light" name="ios-car"></ion-icon></p>
+    <ion-note item-center>Vous n'avez aucun véhicule pour enrégistré pour ce compte.</ion-note>
+ </ion-item>
+ <div >
+  <button ion-button round icon-right (click)="setRoot('create')">Créer un véhicule<ion-icon name="add"></ion-icon></button>      
+ </div> 
+ </ion-list>
+     <ion-fab left bottom *ngIf="_vehicules && _vehicules.length>0"  (click)="setRoot('create')">
+    <button ion-fab color="primary" mini ><ion-icon name="add"></ion-icon></button>
+  </ion-fab> 
+  </ion-content>
+  
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true" main></ion-nav>
+</ion-split-pane>

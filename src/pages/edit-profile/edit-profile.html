@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Paramètres</ion-title>   
+  </ion-navbar>
+</ion-header>
+<ion-content padding >
+<ion-list *ngIf="user">
+     <form #form="ngForm"   novalidate>
+      <ion-item>
+        <ion-label floating color="primary">Nom</ion-label>
+        <ion-input [(ngModel)]="user.displayName" name="displayName" type="text" #nom="ngModel" required>
+        </ion-input>
+      </ion-item>  
+      <ion-item>
+        <ion-label floating color="primary">Ville</ion-label>
+        <ion-input [(ngModel)]="user.ville" name="ville" type="text" #nom="ngModel" required>
+        </ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label floating color="primary">Pays</ion-label>
+        <ion-input [(ngModel)]="user.pays" name="pays" type="text" #nom="ngModel" required>
+        </ion-input>
+      </ion-item>              
+   <ion-item >
+  <ion-label color="primary" floating>Votre langue </ion-label>
+   <ion-select  [(ngModel)]="user.langue" name="langue" #langue="ngModel" required >  
+         <ion-option  value="en">English</ion-option> 
+         <ion-option  value="fr"> Français </ion-option>
+   </ion-select>
+  </ion-item>
+     <ion-item >
+       <ion-label color="primary" floating>Télephone</ion-label>
+      <ion-input  [(ngModel)] = "user.phone" type="tel" name="phone"  placeholder="" #mobile="ngModel" required>       
+      </ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label floating color="primary">Adresse mail</ion-label>
+        <ion-input  [(ngModel)] ="user.email" type="text" name="email"   #email="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea rows="2" [(ngModel)]="user.adresse" placeholder="Adresse" name="adresse" type="text" #nom="ngModel">
+        </ion-textarea>
+      </ion-item>      
+      <div padding>
+        <button ion-button full round color="primary" class="tangoAnimate quick tangoCentre"  [disabled]="isInvalid()|| submitted" (click)="onSubmit()"  [ngClass]="setClass()">
+            <span *ngIf="!submitted" >Mettre à jour</span>
+            <ion-spinner [color]="spinnerColor" *ngIf="submitted"></ion-spinner>
+      </button>
+      </div>
+    </form>
+  </ion-list>
+</ion-content>

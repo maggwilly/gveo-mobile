@@ -1,0 +1,83 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.empty {
+ 
+  div {
+      color: #9c99a7;  
+      padding-top: 61px 0;
+      text-align: center;
+      align-content: center;
+      p {
+       font-size: 70px;
+
+     }
+}
+
+}
+
+ .logo {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+ .item-menu {
+    text-align: left;
+    background-color: rgb(6,92,121);
+    border: none !important;
+    color: #e0e0e0;  
+  }
+   .menu {
+     color: #e0e0e0;
+     background-color: rgb(6,92,121);
+  }
+
+ion-item {
+  img {
+        max-height: 100%;
+        max-width: 52px;
+      }
+}  
+ .header-lg{
+       background-color: transparent;
+       width: 100%;
+       padding-left: 1%;
+       
+       padding-right: 1%;
+       color:  color($colors,white);
+         p{
+            font-size: 1.1em;
+            padding-top: 2px;
+            color:  color($colors,white);  
+       }   
+       img {
+           display: inline-block;
+           border-radius: 6px;
+           height: 72px;
+           width: 72px;
+      } 
+
+    }
+
+.tool-bar{
+      height: 30px;
+      padding-bottom: 2px;
+       background-color:map-get($colors, primary);
+    }

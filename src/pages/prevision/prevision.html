@@ -1,0 +1,59 @@
+
+<ion-header no-border no-shadow>
+  <ion-navbar>
+    <ion-title>Dernière operation</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+<ion-grid >
+<ion-row justify-content-center>
+<ion-col col-sm-12 col-xl-4 col-md-6 col-lg-4 >  
+<ion-list-header text-wrap *ngIf="operation.lastReparation">
+  <h2> <strong>{{operation.libele}}</strong></h2>
+ </ion-list-header>
+<ion-list  *ngIf="operation.lastReparation">
+<ion-item><p>Date dernière opération </p><h3 item-right>{{operation.lastReparation.dateSave| date: 'dd/MM/yyyy'}}</h3></ion-item>
+<ion-item><p>Durée de vie </p><h3 item-right>{{operation.lastReparation.duree}} km</h3></ion-item>
+<ion-item><p>Coût dernière opération</p><h3 item-right>{{operation.lastReparation.cout}} {{devise}}</h3></ion-item>
+<ion-item *ngIf="operation.kmrt">
+  <p> <span *ngIf="operation.kmrt >= 0">Distance restante</span>
+      <span *ngIf="operation.kmrt < 0">Dépassée de </span>
+  <ion-icon name="ios-warning"  *ngIf="operation.kmrt>0 && operation.kmrt<operation.km_alerte" color="orange"></ion-icon>
+   <ion-icon name="md-warning" *ngIf="operation.kmrt<0"  color="danger"></ion-icon>
+  </p><h3 item-right *ngIf="operation.kmrt >= 0">{{operation.kmrt}} km</h3>
+  <h3 item-right *ngIf="operation.kmrt < 0">{{-1*operation.kmrt}} km</h3>
+  </ion-item>
+<ion-item text-wrap>
+  <p>Prochaine opération </p>
+<h3 item-right>{{nextKm(operation)}} km</h3>
+</ion-item>
+<div ion-item text-wrap no-lines *ngIf="operation.lastReparation">
+  <p>
+   <ion-icon name="md-information-circle" ></ion-icon> {{operation.conseil}}
+  </p>
+</div>
+</ion-list>
+ <div padding *ngIf="operation.lastReparation">
+  <button ion-button  block icon-right (click)="creerPrevision(operation)"> Enregistrer une opération<ion-icon name="add"></ion-icon></button>      
+ </div> 
+ <div padding *ngIf="operation.lastReparation">
+  <button (click)="showConfirm()" ion-button outline block icon-right color="danger">Annuler l'opération<ion-icon name="md-create"></ion-icon></button>      
+ </div> 
+<ion-list *ngIf="operation.loaded&&!(operation.lastReparation)" class="empty" >
+<ion-item text-wrap no-lines>
+   <p><ion-icon color="light" name="ios-clipboard"></ion-icon></p>
+    <ion-note item-center>Vous n'avez aucune opération enrégistrée pour <strong>{{operation.libele}}</strong>.</ion-note>
+ </ion-item>
+ <div padding>
+  <button ion-button  icon-right (click)="creerPrevision(operation)"> Enregistrer une opération<ion-icon name="add"></ion-icon></button>      
+ </div> 
+ </ion-list>
+  <ion-grid style="min-height: 185px;justify-content: center;" *ngIf="!operation.loaded">
+            <ion-row justify-content-center align-items-center style="height: 100%;justify-content: center;">
+              <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+            </ion-row>
+     </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid> 
+</ion-content>

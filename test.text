@@ -1,0 +1,27 @@
+Nom d'alias : penka
+Date de création : 21 juin 2017
+Type d'entrée : PrivateKeyEntry
+Longueur de chaîne du certificat : 1
+Certificat[1]:
+Propriétaire : CN=PENKA, OU=CENTOR, O=CENTOR INC, L=Douala, ST=Littoral, C=CM
+Emetteur : CN=PENKA, OU=CENTOR, O=CENTOR INC, L=Douala, ST=Littoral, C=CM
+Numéro de série : 6f76e118
+Valide du : Wed Jun 21 14:11:24 CEST 2017 au : Sun Nov 06 13:11:24 CET 2044
+Empreintes du certificat :
+	 MD5 : A5:6E:DA:03:E5:74:08:69:23:0A:C9:71:42:B6:08:43
+	 SHA1 : 8B:B5:0E:36:77:51:5A:A9:F9:30:AD:0E:1F:9E:A4:5F:55:20:97:DC
+	 SHA256 : 5F:50:59:5E:69:4C:B4:CA:D2:B9:4C:C6:B4:BF:EE:15:47:20:E9:90:0E:E2:55:87:14:B7:4A:0D:56:12:43:64
+Nom de l'algorithme de signature : SHA256withRSA
+Algorithme de clé publique du sujet : Clé RSA 2048 bits
+Version : 3
+
+Extensions : 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 85 1A 07 46 BA 8E 9E 25   46 D4 0A 6F 38 EC 8E 67  ...F...%F..o8..g
+0010: 9A BD F2 6E                                        ...n
+]
+]
+

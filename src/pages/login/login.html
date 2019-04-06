@@ -1,0 +1,59 @@
+
+<ion-content class="bgAuth"> 
+  <div class="logo" >
+   <!--  <img src="assets/images/logo.png" >-->
+    </div>
+    <ion-grid>
+     <ion-row justify-content-center>
+    <ion-col col-sm-12  col-md-6 col-lg-4 col-xl-3>
+    <form [formGroup]="usercreds"  >
+      <ion-list inset>
+      <div text-center >
+          <strong>CONNEXION</strong>
+          <p>Connectez-vous à votre compte gveo</p>
+    </div>         
+       <div padding> 
+      <ion-item>
+        <ion-label floating color="primary"></ion-label>
+        <ion-input type="text" formControlName="login"  placeholder="Adresse e-mail"  autocapitalize="off">
+        </ion-input>
+      </ion-item>
+        <div *ngIf="!login.valid && login.touched">
+          <div><small *ngIf="login.errors.pattern && login.dirty" color= "danger">Saisir une adresse e-mail valide !</small></div>
+        </div>  
+      <ion-item>
+        <ion-label floating  color="primary"></ion-label>
+        <ion-input type="password" formControlName="password" placeholder="Mot de passe">
+        </ion-input>
+      </ion-item>
+       <div *ngIf="!password.valid && password.touched">
+           <div><small *ngIf="password.errors.minlength && password.dirty || password.errors.maxlength && password.dirty"  color= "danger">Saisir un mot de passe</small></div>
+        </div>
+       </div> 
+     <div padding>
+        <button ion-button  block   color="secondary" class="tangoAnimate quick tangoCentre" [disabled]="isInvalid()" (click)="onSubmit()"  [ngClass]="setClass()">
+            <span *ngIf="!submitted" ><strong>CONNEXION</strong></span>
+            <ion-spinner [color]="spinnerColor" *ngIf="submitted"></ion-spinner>
+      </button>
+      <br>
+      <button ion-button  clear (click)="goToResetPassword()"  color="white">
+            Mot de passe oublié
+       </button> 
+      </div> 
+       <div padding>
+       <button ion-button outline  block color="light"  (click)="signup()">
+        <span >Créer mon compte</span>
+        </button> 
+      </div>        
+      
+     </ion-list>     
+    </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>    
+</ion-content>
+  <ion-footer no-border no-shadow >
+<!--<ion-item text-center text-wrap (click)="signup()">
+   <p text-center>Vous n'avez pas encore de compte ? <a><strong>Inscrivez-vous</strong></a></p>
+</ion-item>-->
+</ion-footer>

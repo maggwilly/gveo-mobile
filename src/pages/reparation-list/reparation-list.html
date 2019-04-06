@@ -1,0 +1,49 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Historique</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+<div padding ion-item *ngIf="systeme.maintenances && systeme.maintenances.length">
+  <h2 >{{systeme.nom}}</h2>
+  <p text-wrap >
+  <span *ngIf="systeme.maintenances.length>1">{{systeme.maintenances.length}} réparations</span>
+  <span *ngIf="systeme .maintenances.length==1">une seule réparation</span>
+  <span *ngIf="systeme.maintenances.length">Cout total: {{systeme.cout}} {{devise}}</span> 
+  </p>
+    <p *ngIf="!(systeme.maintenances&&systeme.maintenances.length)">
+      Aucune opération
+    </p>
+</div>
+<ion-list *ngIf="systeme.maintenances && systeme.maintenances.length" #maintenancesList>
+<ion-item  *ngFor="let maintenance of systeme.maintenances"    text-wrap   (click)="editReparation(maintenance)">
+      {{maintenance.dateSave | date: 'dd/MM/yyyy'}}
+      <h3 >Remplacement de: {{maintenance.description}}</h3>
+      <p >M d'oeuvre: <strong>{{maintenance.coutMainOeuvre}} {{devise}}</strong>, pièces:<strong> {{maintenance.cout}} {{devise}}</strong></p>
+      <ion-note color="primary" >Total : {{coutTotal(maintenance)}} {{devise}}</ion-note>
+      <ion-note item-right color="primary">{{maintenance.km}} KM</ion-note>
+ </ion-item>
+</ion-list>
+<ion-list *ngIf="systeme.loaded&&!(systeme.maintenances && systeme.maintenances.length)" class="empty">
+<ion-item text-wrap no-lines>
+    <p>
+     <ion-icon color="light" name="ios-construct"></ion-icon>
+   </p>
+    <ion-note item-center>Vous n'avez aucune réparation enrégistrée pour le système pour 
+      <strong> {{systeme.nom}}</strong>.
+      </ion-note>
+ </ion-item>
+ <div padding>
+  <button ion-button round icon-right (click)="newReparation()"> Enregistrer une réparation<ion-icon name="add"></ion-icon></button>      
+ </div> 
+ </ion-list>
+          <ion-grid style="min-height: 185px;justify-content: center;" *ngIf="!systeme.loaded">
+            <ion-row justify-content-center align-items-center style="height: 100%;justify-content: center;">
+              <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+            </ion-row>
+          </ion-grid>
+ <ion-fab right bottom *ngIf="systeme.maintenances && systeme.maintenances.length" (click)="newReparation()">
+    <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+ </ion-fab>
+</ion-content>

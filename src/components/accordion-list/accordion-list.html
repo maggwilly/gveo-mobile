@@ -1,0 +1,36 @@
+
+<ion-list >
+    <ion-list-header no-lines no-padding >
+        <button (click)="toggleAccordion()" [class.active]="expanded" [style.background]="headerColor" class="accordion-header" detail-none ion-item>
+            {{displayed.matricule|uppercase}}
+            -<small *ngIf="displayed&&displayed.marque">
+                {{displayed.marque.nom}},
+                {{displayed.description}}</small>
+            <p></p>
+            <div item-right>
+                <ion-badge *ngIf="displayed.todos" color="danger" item-end>
+                    {{displayed.todos.length}}</ion-badge>
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+            </div>
+        </button>
+        <div #accordionContent [class.active]="expanded" [style.background]="contentColor" class="accordion-content">
+            <ion-list *ngIf="displayed&&loaded">
+                <ion-item (click)="showPrevision(operation)" *ngFor="let operation of displayed.todos" text-wrap>
+                    <ion-avatar item-left>
+                        <img [src]="operation.thumburl" [alt]=""></ion-avatar>
+                        <h3>
+                            <strong>
+                                {{operation.libele}}</strong>
+                        </h3>
+                        <p class="ion-note">
+                            {{operation.todo}}</p>
+                    </ion-item>
+                </ion-list>
+                <ion-grid style="min-height:100%;justify-content: center;" *ngIf="!loaded">
+                    <ion-row align-items-center justify-content-center style="height: 100%;justify-content: center;">
+                        <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </ion-list-header>
+    </ion-list>

@@ -1,0 +1,26 @@
+<ion-navbar class="header-lg" last-releve [displayed]="displayed">
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+     <ion-title *ngIf="displayed">
+      {{displayed.matricule |uppercase}}
+     </ion-title>
+      <small *ngIf="displayed && displayed.marque">{{displayed.marque.nom}}, {{displayed.description}}</small>
+    <ion-buttons end *ngIf="displayed">
+    <button ion-button small  (click)="createReleve()" style="min-width: 60px;"*ngIf="displayed.lastReleve" [color]="displayed.lastReleve.color" outline>
+      <span  >{{displayed.lastReleve.km}} KM</span>
+    </button>
+    <button ion-button (click)="openStat()"icon-only  *ngIf="statshow" showWhen="android"  clear>
+      <ion-icon name="ios-pie-outline"></ion-icon>
+    </button>
+    <button ion-button (click)="openRecap()" icon-only *ngIf="recapshow" showWhen="android" clear >
+      <ion-icon name="md-clipboard"></ion-icon>
+      <ion-badge color="danger">{{isTodos}}</ion-badge>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div text-center no-padding class="tool-bar">
+     <span style="color:#fff" text-center>
+      {{text}}
+     </span>   
+  </div>

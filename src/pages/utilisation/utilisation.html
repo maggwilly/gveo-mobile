@@ -1,0 +1,84 @@
+
+
+<ion-header no-border no-shadow>
+  <header-component [text]="title" [displayed]="displayed" statshow="true"></header-component>  
+</ion-header>
+<ion-content [displayed]="displayed" [periode]="periode" [startDate]="startDate" [endDate]="endDate" statistic>
+  <ion-grid *ngIf="displayed">
+  <ion-row justify-content-center>
+  <ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6 *ngIf="displayed">  
+ <ion-card >
+    <ion-list >
+      <ion-item>
+        <h2 class="card-title">
+         Détails et coûts
+        </h2>
+        <button ion-button small item-right (click)="openMenu('police')" icon-left>
+          <ion-icon name="md-calendar"></ion-icon> {{title}}
+        </button>
+      </ion-item>
+  <ion-item  text-wrap><p>Conducteur</p><h3 item-right>{{displayed.chauffeur}}</h3></ion-item>
+  <ion-item  text-wrap><p>Distance parcourue</p>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&displayed.statstic.totalkm">{{(displayed.statstic.totalkm)}} KM</h3>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&!displayed.statstic.totalkm">Non estimé</h3>
+  <ion-spinner item-right name="dots" *ngIf="displayed&&!displayed.statstic"></ion-spinner>
+  </ion-item>
+  <ion-item  text-wrap><p>Coût de maintenance préventive</p>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&displayed.statstic.preventive">{{displayed.statstic.preventive}} {{devise}}</h3>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&!displayed.statstic.preventive">Aucun côut</h3>
+  <ion-spinner item-right name="dots" *ngIf="displayed&&!displayed.statstic"></ion-spinner>
+  </ion-item>
+  <ion-item  text-wrap><p>Coût de maintenance curative</p>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&displayed.statstic.cuirative">{{displayed.statstic.cuirative}} {{devise}}</h3>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&!displayed.statstic.cuirative">Aucun côut</h3>
+  <ion-spinner item-right name="dots" *ngIf="!displayed.statstic"></ion-spinner>
+  </ion-item>
+  <ion-item  text-wrap><p>Dépenses administravives</p>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&displayed.statstic.legislation">{{displayed.statstic.legislation}} {{devise}}</h3>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&!displayed.statstic.legislation">Aucun côut</h3>
+  <ion-spinner item-right name="dots" *ngIf="displayed&&!displayed.statstic"></ion-spinner>
+  </ion-item>  
+  <ion-item  text-wrap><p>Coût total de maintenance</p>
+  <h2 item-right *ngIf="displayed&&displayed.statstic&&displayed.statstic.coutTotal">{{displayed.statstic.coutTotal}} {{devise}}</h2>
+  <h3 item-right *ngIf="displayed&&displayed.statstic&&!displayed.statstic.coutTotal">Aucun côut</h3>
+  <ion-spinner item-right name="dots" *ngIf="displayed&&!displayed.statstic"></ion-spinner>
+  </ion-item>
+ </ion-list>
+ <button ion-button clear block icon-right (click)="editVehicule()"> Paramètres du véhicule<ion-icon name="md-settings"></ion-icon></button>   
+</ion-card>
+
+</ion-col>
+  <ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6>  
+ <ion-card>
+ <ion-card-header>
+    Repartition des coûts
+  </ion-card-header>
+    <ion-card-content >
+        <canvas style="height: 150px; width: 150px;" #doughnutCanvas></canvas>
+     </ion-card-content>
+          <ion-grid style="min-height:100%;justify-content: center;" *ngIf="displayed&&!displayed.loaded">
+            <ion-row justify-content-center align-items-center style="height: 100%;justify-content: center;">
+              <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+            </ion-row>
+          </ion-grid>
+</ion-card>
+ 
+</ion-col>
+ </ion-row>
+</ion-grid>
+  <ion-grid >
+  <ion-row justify-content-center>
+  <ion-col col-sm-12 col-xl-6 col-md-6 col-lg-6>  
+<ion-list *ngIf="!displayed" class="empty" >
+<ion-item text-wrap no-lines>
+   <p><ion-icon color="light" name="md-list"></ion-icon></p>
+    <ion-note item-center>Selectionnez un véhicule pour afficher les informations.</ion-note>
+ </ion-item>
+ <div padding>
+  <button ion-button  icon-right menuToggle>selectionner un véhicule<ion-icon name="ios-car"></ion-icon></button>      
+ </div> 
+ </ion-list>
+</ion-col>
+ </ion-row>
+</ion-grid> 
+</ion-content>

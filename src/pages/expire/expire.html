@@ -1,0 +1,36 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Limitations</ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span color="primary" showWhen="ios">Annuler</span>
+          <ion-icon name="md-close" showWhen="android,windows,browser"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list class="empty" >
+    <ion-item text-wrap no-lines text-center>
+       <p><ion-icon color="#9c99a7" name="md-list"></ion-icon></p>
+        <span item-center *ngIf="isExpired(abonnement)">
+          Votre période d'essai est arrivée à son terme. Veillez nous contacter pour souscrire à une offre proféssionnelle. 
+        </span>
+        <span item-center *ngIf="!isExpired(abonnement)">
+          Vous ne pouvez gérer plus de {{abonnement.nbervehicule}} vehicules. Veillez nous contacter pour souscrire à une offre proféssionnelle.
+        </span>
+          <h2>Tel: +237698201903</h2>
+          <h2>E-mail: buhtdirection@gmail.com</h2>
+     </ion-item>
+     </ion-list>
+<div padding>
+  <a ion-button icon-right block href="tel:+237698201903">Appeler
+    <ion-icon name="cell"></ion-icon>
+  </a>
+  <br>
+    <a ion-button icon-right outline block href="mailto:buhtdirection@gmail.com">Ecrire un mail
+      <ion-icon name="mail"></ion-icon>
+    </a>
+</div>
+</ion-content>

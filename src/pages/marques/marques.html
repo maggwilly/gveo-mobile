@@ -1,0 +1,25 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Marques</ion-title>
+      <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Annuler</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-list inset *ngIf="marques"> 
+   <ion-item *ngFor="let marque of marques" (click)="onSelect(marque)" text-wrap >
+    <div item-left>
+      <img [src]="marque.logo" [alt]="">
+    </div>
+    <h2>{{marque.nom}}</h2>
+  </ion-item> 
+</ion-list>
+</ion-content>

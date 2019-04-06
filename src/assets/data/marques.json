@@ -1,0 +1,92 @@
+[
+  {
+    "id": 6,
+    "nom": "Chery",
+    "logo": "assets/images/logo/chery.png"
+  },
+  {
+    "id": 7,
+    "nom": "Alfa Romeo",
+    "logo": "assets/images/logo/alfa_romeo.png"
+  },
+  {
+    "id": 8,
+    "nom": "Chevrolet",
+    "logo": "assets/images/logo/chevrolet.png"
+  },
+  {
+    "id": 9,
+    "nom": "Citroen",
+    "logo": "assets/images/logo/citroen.png"
+  },
+  {
+    "id": 10,
+    "nom": "Fiat",
+    "logo": "assets/images/logo/fiat.png"
+  },
+  {
+    "id": 11,
+    "nom": "Hyundai",
+    "logo": "assets/images/logo/hyundai.png"
+  },
+  {
+    "id": 12,
+    "nom": "Infiniti",
+    "logo": "assets/images/logo/infiniti.png"
+  },
+  {
+    "id": 13,
+    "nom": "Isuzu",
+    "logo": "assets/images/logo/isuzu.png"
+  },
+  {
+    "id": 14,
+    "nom": "Land Rover",
+    "logo": "assets/images/logo/land_rover.png"
+  },
+  {
+    "id": 15,
+    "nom": "Lexus",
+    "logo": "assets/images/logo/lexus.png"
+  },
+  {
+    "id": 16,
+    "nom": "Mercedes",
+    "logo": "assets/images/logo/mercedes.png"
+  },
+  {
+    "id": 17,
+    "nom": "Mistsubishi",
+    "logo": "assets/images/logo/mitsubishi.png"
+  },
+  {
+    "id": 18,
+    "nom": "Nissan",
+    "logo": "assets/images/logo/nissan.png"
+  },
+  {
+    "id": 14,
+    "nom": "Peugeot",
+    "logo": "assets/images/logo/peugeot.png"
+  },
+  {
+    "id": 15,
+    "nom": "Renault",
+    "logo": "assets/images/logo/renault.png"
+  },
+  {
+    "id": 16,
+    "nom": "Suzuki",
+    "logo": "assets/images/logo/suzuki.png"
+  },
+  {
+    "id": 17,
+    "nom": "Volkswagen",
+    "logo": "assets/images/logo/volkswagen.png"
+  },
+  {
+    "id": 18,
+    "nom": "Mazda",
+    "logo": "assets/images/logo/mazda.png"
+  }
+]

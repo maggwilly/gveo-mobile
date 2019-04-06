@@ -1,0 +1,69 @@
+<!--
+  Generated template for the PrevisionCreate page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Annuler</span>
+        <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>
+      </button>
+    </ion-buttons>    
+    <ion-title *ngIf="operation "> {{operation.operation}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list-header text-wrap >
+   <h2>{{operation.libele}}</h2>
+  </ion-list-header>
+   <form #form="ngForm"   novalidate> 
+<ion-list  *ngIf="operation ">
+  <ion-item>
+  <ion-label color="primary" floating>Date de l'opération</ion-label>
+  <ion-datetime 
+     displayFormat="DD/MM/YYYY"
+    pickerFormat="D MMM  YYYY" 
+     doneText="Terminé" cancelText="Annuler"
+    name="dateSave"
+     [(ngModel)]="lastReparation.dateSave"
+      #dateSave="ngModel"></ion-datetime>
+</ion-item>
+
+  <ion-item >
+  <ion-label color="primary" floating>Kilométrage à la date</ion-label>
+    <ion-input [(ngModel)]="lastReparation.km" name="km" type="number"  placeholder=" "  #km="ngModel"></ion-input> 
+  </ion-item>
+  <ion-item >
+  <ion-label color="primary" floating>Durée de vie (en KM)</ion-label>
+    <ion-input [(ngModel)]="lastReparation.duree" name="duree" type="number" placeholder=" " #duree="ngModel"></ion-input> 
+  </ion-item>
+  <ion-item >
+<ion-label color="primary" floating>Coût de l'opération </ion-label>
+    <ion-input [(ngModel)]="lastReparation.cout" name="cout" type="number" placeholder="" #cout="ngModel"></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-textarea rows="3" [(ngModel)]="lastReparation.commentaires" name="commentaires" type="text" placeholder="Faites un commentaire" #commentaires="ngModel"></ion-textarea>
+  </ion-item>  
+
+ </ion-list>
+   <div padding>
+  <button ion-button  block color="primary"   icon-right (click)="onSubmit()" [disabled]="isInvalid() || submitted" type="submit"  [ngClass]="setClass()">
+    <span *ngIf="!submitted && action=='edit'" > Mettre à jour<ion-icon name="md-done-all"></ion-icon> </span>
+    <span *ngIf="!submitted && action=='create'" > Enregistrer l'opération<ion-icon name="md-done-all"></ion-icon> </span>
+     <ion-spinner [color]="spinnerColor" *ngIf="submitted"></ion-spinner>
+     </button>    
+  </div>
+   </form>
+   <div padding center *ngIf="action=='edit'">
+  <button ion-button  outline block  color="danger" icon-right (click)="showConfirm()" [disabled]="submitted"> Supprimer l'opération<ion-icon name="ios-close-circle"></ion-icon></button>      
+  </div>
+  <div ion-item text-wrap no-lines >
+      <p>
+       <ion-icon name="md-information-circle" ></ion-icon> {{operation.conseil}}
+      </p>
+    </div>
+</ion-content>

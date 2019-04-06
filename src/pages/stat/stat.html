@@ -1,0 +1,103 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Statistiques générales</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Annuler</span>
+        <ion-icon name="md-close" showWhen="android,windows,browser"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div text-center no-padding class="tool-bar">
+    <span style="color:#fff" text-center>
+     {{title}}
+    </span>
+  </div>
+</ion-header>
+<ion-content  [periode]="periode" [startDate]="startDate" [endDate]="endDate" [displayed]="displayed" statistic>
+  <ion-grid [hidden]="!displayed">
+    <ion-row justify-content-center>
+      <ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6 *ngIf="displayed">
+        <ion-card>
+          <ion-list>
+            <ion-item>
+              <h2 class="card-title">
+                Détails et coûts
+              </h2>
+              <button ion-button small item-right (click)="openMenu('police')" icon-left>
+                <ion-icon name="md-calendar"></ion-icon> {{title}}
+              </button>
+            </ion-item>
+            <ion-item text-wrap>
+              <p>Distance parcourue</p>
+              <h3 item-right *ngIf="displayed.statstic&&displayed.statstic.totalkm">{{(displayed.statstic.totalkm)}} KM</h3>
+              <h3 item-right *ngIf="displayed.statstic&&!displayed.statstic.totalkm">Non estimé</h3>
+              <ion-spinner item-right name="dots" *ngIf="!displayed.statstic"></ion-spinner>
+            </ion-item>
+            <ion-item text-wrap>
+              <p>Coût de maintenance préventive</p>
+              <h3 item-right *ngIf="displayed.statstic&&displayed.statstic.preventive">{{displayed.statstic.preventive}} {{devise}}</h3>
+              <h3 item-right *ngIf="displayed.statstic&&!displayed.statstic.preventive">Aucun côut</h3>
+              <ion-spinner item-right name="dots" *ngIf="!displayed.statstic"></ion-spinner>
+            </ion-item>
+            <ion-item text-wrap>
+              <p>Coût de maintenance curative</p>
+              <h3 item-right *ngIf="displayed.statstic&&displayed.statstic.cuirative">{{displayed.statstic.cuirative}} {{devise}}</h3>
+              <h3 item-right *ngIf="displayed.statstic&&!displayed.statstic.cuirative">Aucun côut</h3>
+              <ion-spinner item-right name="dots" *ngIf="!displayed.statstic"></ion-spinner>
+            </ion-item>
+            <ion-item text-wrap>
+              <p>Dépenses administravives</p>
+              <h3 item-right *ngIf="displayed.statstic&&displayed.statstic.legislation">{{displayed.statstic.legislation}} {{devise}}</h3>
+              <h3 item-right *ngIf="displayed.statstic&&!displayed.statstic.legislation">Aucun côut</h3>
+              <ion-spinner item-right name="dots" *ngIf="!displayed.statstic"></ion-spinner>
+            </ion-item>
+            <ion-item text-wrap>
+              <p>Coût total de maintenance</p>
+              <h2 item-right *ngIf="displayed.statstic&&displayed.statstic.coutTotal">{{displayed.statstic.coutTotal}} {{devise}}</h2>
+              <h3 item-right *ngIf="displayed.statstic&&!displayed.statstic.coutTotal">Aucun côut</h3>
+              <ion-spinner item-right name="dots" *ngIf="!displayed.statstic"></ion-spinner>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+      </ion-col>
+      <ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6>
+        <ion-card>
+          <ion-card-header>
+            Repartition des coûts
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #doughnutCanvas></canvas>
+          </ion-card-content>
+          <ion-grid style="min-height:100%;justify-content: center;" *ngIf="displayed&&!displayed.loaded">
+            <ion-row justify-content-center align-items-center style="height: 100%;justify-content: center;">
+              <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-sm-12 col-xl-6 col-md-6 col-lg-6>
+        <ion-list *ngIf="!displayed" class="empty">
+          <ion-item text-wrap no-lines>
+            <p>
+              <ion-icon color="light" name="md-list"></ion-icon>
+            </p>
+            <ion-note item-center>Selectionnez un véhicule pour afficher les informations.</ion-note>
+          </ion-item>
+          <div padding>
+            <button ion-button icon-right menuToggle>selectionner un véhicule
+              <ion-icon name="ios-car"></ion-icon>
+            </button>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

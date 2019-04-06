@@ -1,0 +1,14 @@
+page-reparation-list {
+.ouverte {
+    ion-item{
+     border-left: 5px solid color($colors, primary);
+     padding-left: 10px; 
+     border-radius: 3%;
+    }
+}
+.terminee ion-item{
+     border-left: 5px solid color($colors, secondary);
+     padding-left: 10px;
+    border-radius: 3%;
+}
+}

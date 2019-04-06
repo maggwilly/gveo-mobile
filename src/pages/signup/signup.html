@@ -1,0 +1,99 @@
+
+<ion-content class="bgAuth">
+   <div class="logo" >
+     <!--  <img src="assets/images/logo.png" >-->
+    </div>
+    <ion-grid>
+     <ion-row justify-content-center>
+    <ion-col col-sm-12  col-md-6 col-lg-4 col-xl-3>    
+    <form  [formGroup]="newUser"  >
+    <section *ngIf="stape=='email'">
+      <ion-list inset>
+        <div text-center>
+          <strong>VOTRE ADRESSE E-MAIL</strong>
+          <p>Saisir l'adresse e-mail avec laquelle vous souhaitez vous connectecter à votre compte.</p>
+        </div> 
+      <ion-item>
+         <ion-label floating color="primary"></ion-label>
+        <ion-input  type="text" formControlName="email"  placeholder="Adresse e-mail">       
+        </ion-input>
+      </ion-item>
+        <div *ngIf="!email.valid && email.touched">
+          <div><small *ngIf="email.errors.pattern && email.dirty" color= "danger">adresse e-mail invalide.</small></div>
+        </div>         
+   </ion-list>
+ </section>   
+  <section *ngIf="stape=='password'">
+      <ion-list inset> 
+      <div text-center >
+          <strong>MOT DE PASSE</strong>
+          <p>Définir un mot de passe pour votre compte.</p>
+    </div>             
+      <ion-item>
+        <ion-label floating color="primary"></ion-label>
+        <ion-input  type="password" formControlName="plainPassword" placeholder="Mot de passe" >
+        </ion-input>
+      </ion-item>
+       <div *ngIf="!plainPassword.valid && plainPassword.touched">
+           <div><small *ngIf="plainPassword.errors.minlength && plainPassword.dirty || plainPassword.errors.maxlength && plainPassword.dirty"  color= "danger">Mot de passe entre 6-24 caractères.</small></div>
+        </div>     
+       <ion-item>
+        <ion-label floating color="primary"></ion-label>
+        <ion-input formControlName="passwordConfirm" type="password"  placeholder="Comfirmez le mot de passe"  >
+        </ion-input>
+      </ion-item> 
+        <div *ngIf="!passwordConfirm.valid && passwordConfirm.touched">
+           <div><small *ngIf="passwordConfirm.errors.minlength && passwordConfirm.dirty || passwordConfirm.errors.maxlength && passwordConfirm.dirty" color= "danger">Mot de passe entre 6-24 caractères.</small></div>
+          </div>
+         <div *ngIf="passwordConfirm.touched && (passwordConfirm.value !== plainPassword.value)">
+            <div><small color= "danger">Les mots de passe ne correspondent pas.</small></div>
+         </div>
+   </ion-list>
+  </section>  
+  <!--  <section *ngIf="stape=='nom'">
+      <ion-list inset>
+      <div text-center>
+          <strong>NOM COMPLET</strong>
+          <p>Saisir votre nom complet.</p>
+    </div>             
+      <ion-item>
+        <ion-label floating color="primary"></ion-label>
+        <ion-input  formControlName="nom" type="text"  placeholder="Votre nom complet"  ></ion-input>
+      </ion-item>
+       <div *ngIf="!nom.valid && nom.touched">
+           <div><small *ngIf="nom.errors.minlength && nom.dirty || nom.errors.maxlength && nom.dirty" color= "danger">Votre nom complet entre 6-24 caractères.</small></div>
+     </div>        
+   </ion-list>
+ </section> -->
+ <ion-list inset> 
+ <div>
+      <button *ngIf="stape=='password'" ion-button  color="secondary" class="tangoAnimate quick tangoCentre" [disabled]="isInvalid()||submitted" (click)="onSubmit()"  [ngClass]="setClass()" icon-left>
+        <span *ngIf="!submitted" ><ion-icon name="log-in"></ion-icon><strong>Terminer</strong></span>
+        <ion-spinner [color]="spinnerColor" *ngIf="submitted"></ion-spinner>
+    </button>
+  </div>  
+ </ion-list> 
+ <div >
+      <button *ngIf="stape!='password'" ion-button  color="secondary"  [disabled]="isInvalid()" (click)="nextStape()" >
+        <span  ><strong>Suivant</strong></span>        
+    </button>
+ </div> 
+ </form>
+   <br> 
+  <div padding [hidden]="stape=='password'">
+ <button ion-button outline  block color="light"  (click)="login()">
+  <span >Me connecter</span>
+  </button> 
+ </div> 
+    </ion-col>
+  </ion-row>
+</ion-grid>   
+</ion-content>
+<ion-footer no-border no-shadow>
+<!--<ion-item *ngIf="stape=='email'" text-center text-wrap (click)="login()">
+   <p text-center>Vous avez déja un compte ? <a><strong>Connectez-vous</strong></a></p>
+</ion-item>-->
+<ion-item *ngIf="stape!='email'"  text-wrap (click)="previewStape()">
+   <a><strong>Retourner</strong></a> à la section précedente.
+</ion-item>
+</ion-footer>

@@ -1,0 +1,138 @@
+<ion-header no-border no-shadow>
+  <header-component [text]="'Assurance & Visite Tech.'" [displayed]="displayed"></header-component>
+</ion-header>
+<ion-content>
+   <ion-grid *ngIf="displayed">
+      <ion-row justify-content-center>
+        <ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6 *ngIf="displayed"> 
+  <ion-card *ngIf="displayed" last-police [displayed]="displayed">
+    <ion-list *ngIf="!displayed.police&&displayed.loadedPolice" class="empty_item">
+      <ion-item text-wrap no-lines>
+        <p>
+          <ion-icon color="light" name="ios-clipboard"></ion-icon>
+        </p>
+        <ion-note item-center>Vous n'avez aucune police d'assurance enrégistrée.</ion-note>
+      </ion-item>
+      <div padding>
+        <button ion-button ion-button round outline block (click)="renouvellerPolice()">
+          Enregistrer une assurance
+        </button>
+      </div>
+    </ion-list>
+    <ion-list *ngIf="displayed.police&&displayed.loadedPolice">
+    <ion-item >
+      <h2 class="card-title">
+        Police d'assurance
+      </h2>
+      <button ion-button item-right (click)="openMenu('police')" icon-left>
+        <ion-icon name="ios-more"></ion-icon> Options
+      </button>
+    </ion-item>
+      <ion-item text-wrap>
+        <ion-icon item-left name="md-calendar"></ion-icon>
+        <ion-row>
+          <ion-col col-6>
+            <h3>Souscription</h3>
+            <p>{{displayed.police.startDate| date: 'dd/MM/yyyy'}}</p>
+          </ion-col>
+          <ion-col col-6>
+            <h3>Expiration</h3>
+            <p>{{displayed.police.endDate | date: 'dd/MM/yyyy'}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item text-wrap>
+        <ion-icon item-left name="md-timer"></ion-icon>
+        <h3>Durée de validité</h3>
+        <p>{{displayed.police.duree}} jours</p>
+        <p *ngIf="displayed.police.restant>1">
+          Expire dans {{displayed.police.restant}} jours
+          <ion-icon [name]="displayed.police.icon" [color]="displayed.police.color"></ion-icon>
+        </p>
+        <ion-badge *ngIf="displayed.police.restant<=0" color="danger">Expirée</ion-badge>
+        <button ion-button *ngIf="displayed.police.restant<15" ion-button item-right round outline (click)="renouvellerPolice()">
+          Renouveller
+        </button>
+      </ion-item>
+    </ion-list>
+          <ion-grid style="min-height: 185px;justify-content: center;" *ngIf="!displayed.loadedPolice">
+            <ion-row justify-content-center align-items-center style="height: 100%;justify-content: center;">
+              <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+            </ion-row>
+          </ion-grid>
+  </ion-card>
+</ion-col>
+<ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6> 
+  <ion-card *ngIf="displayed" last-visite  [displayed]="displayed">
+    <ion-list *ngIf="!displayed.visite&&displayed.loadedVisite" class="empty_item">
+      <ion-item text-wrap no-lines>
+        <p>
+          <ion-icon color="light" name="ios-clipboard"></ion-icon>
+        </p>
+        <ion-note item-center>Vous n'avez aucune visite technique enrégistrée.</ion-note>
+      </ion-item>
+      <div padding>
+        <button ion-button ion-button round outline block (click)="renouvellerVisite()">
+          Enregistrer une visite
+        </button>
+      </div>
+    </ion-list>
+    <ion-list *ngIf="displayed.visite&&displayed.loadedVisite">
+    <ion-item >
+      <h2 class="card-title">
+        Visite technique
+      </h2>
+      <button ion-button item-right (click)="openMenu('visite')" icon-left>
+        <ion-icon name="ios-more"></ion-icon> Options
+      </button>
+    </ion-item>
+      <ion-item text-wrap>
+        <ion-icon item-left name="md-calendar"></ion-icon>
+        <ion-row>
+          <ion-col col-6>
+            <h3>Date de la visite</h3>
+            <p>{{displayed.visite.startDate| date: 'dd/MM/yyyy'}}</p>
+          </ion-col>
+          <ion-col col-6>
+            <h3>Date d'expiration</h3>
+            <p>{{displayed.visite.endDate | date: 'dd/MM/yyyy'}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item text-wrap>
+        <ion-icon item-left name="md-timer"></ion-icon>
+        <h3>Durée de validité</h3>
+        <p>{{displayed.visite.duree}} jours</p>
+        <p *ngIf="displayed.visite.restant>1">
+          Expire dans {{displayed.visite.restant}} jours
+          <ion-icon [name]="displayed.visite.icon" [color]="displayed.visite.color"></ion-icon>
+        </p>
+        <ion-badge *ngIf="displayed.visite.restant<=0" color="danger">Expirée</ion-badge>
+        <button ion-button *ngIf="displayed.visite.restant<15" ion-button item-right round outline (click)="renouvellerVisite()">
+          Renouveller
+        </button>
+      </ion-item>
+    </ion-list>
+          <ion-grid style="min-height: 185px;justify-content: center;" *ngIf="!displayed.loadedVisite">
+            <ion-row justify-content-center align-items-center style="height: 100%;justify-content: center;">
+              <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+            </ion-row>
+          </ion-grid>
+  </ion-card>
+ </ion-col>
+ </ion-row>
+</ion-grid>
+  <ion-list *ngIf="!displayed" class="empty">
+    <ion-item text-wrap no-lines>
+      <p>
+        <ion-icon color="light" name="md-list"></ion-icon>
+      </p>
+      <ion-note item-center>Selectionnez un véhicule pour afficher les informations.</ion-note>
+    </ion-item>
+    <div padding>
+      <button ion-button  icon-right menuToggle>selectionner un véhicule
+        <ion-icon name="ios-car"></ion-icon>
+      </button>
+    </div>
+  </ion-list>
+</ion-content>

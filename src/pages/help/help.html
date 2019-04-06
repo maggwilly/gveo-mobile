@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Aide </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+     <ion-list inset  *ngIf="help && help.textHelps.length">
+       <ion-list-header>
+        A lire
+       </ion-list-header>
+                <a  *ngFor="let textHelp of help.textHelps" [href]="textHelp.link" ion-item>
+                    <ion-icon  name="ios-help-circle" item-left></ion-icon>
+                    <h2>{{textHelp.titre}}</h2>
+                </a>         
+       </ion-list>
+     <ion-list inset  *ngIf="help && help.videoHelps.length">
+       <ion-list-header>
+         Aides vidéos
+       </ion-list-header>
+                <a  *ngFor="let videoHelp of help.videoHelps" [href]="videoHelp.link" ion-item>
+                    <ion-icon color="logo-youtube" name="logo-youtube" item-left></ion-icon>
+                    <h2>{{videoHelp.titre}}</h2>
+                </a>         
+       </ion-list> 
+          
+</ion-content>
