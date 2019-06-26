@@ -2,6 +2,12 @@
   <header-component [text]="'Assurance & Visite Tech.'" [displayed]="displayed"></header-component>
 </ion-header>
 <ion-content>
+    <ion-card text-center padding>
+        <h1>GESTION ADMINISTRATIVE</h1>
+        <ion-card-content> Enregistrer les documents administratifs du véhicule avec les date de création et d'expiration. 
+          Le système saura vous rappeler les différentes dates de renouvellement.  </ion-card-content>
+     </ion-card>
+      
    <ion-grid *ngIf="displayed">
       <ion-row justify-content-center>
         <ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6 *ngIf="displayed"> 

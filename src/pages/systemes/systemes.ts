@@ -5,7 +5,6 @@ import { ReparationListPage} from '../reparation-list/reparation-list';
 import { Storage } from '@ionic/storage';
 import { AuthService} from '../../providers/auth-service';
 import { AppNotify } from '../../app/app-notify';
-import firebase from 'firebase';
 @Component({
   selector: 'page-systemes',
   templateUrl: 'systemes.html'
@@ -14,7 +13,6 @@ export class SystemesPage {
  systemes:any=[];
  displayed:any;
   devise = "XAF";
-
   loading;
   constructor(public navCtrl: NavController,
   public auth: AuthService,

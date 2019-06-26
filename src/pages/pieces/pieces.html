@@ -1,0 +1,31 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+     Selectionnez
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Annuler</span>
+        <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+     <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="search()"
+                   placeholder="Rechercher">
+    </ion-searchbar>   
+  <ion-list *ngIf="pieces.length" inset>
+      <ion-item *ngFor="let piece of pieces" (click)="onSelect(piece)" [hidden]="piece.hide">
+        {{piece.nom}}
+      </ion-item>
+  </ion-list>
+  <ion-grid style="min-height:100%;justify-content: center;" *ngIf="!loaded">
+    <ion-row align-items-center justify-content-center style="height: 100%;justify-content: center;">
+        <ion-spinner name="dots" class="vertical-center"></ion-spinner>
+    </ion-row>
+</ion-grid>  
+</ion-content>

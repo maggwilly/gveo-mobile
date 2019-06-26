@@ -10,11 +10,10 @@
       <span *ngIf="vehicule.matricule">{{vehicule.matricule}}</span><span *ngIf="!vehicule.matricule"> Nouveau vehicule</span>
     </ion-title>
     <ion-buttons start>
- 
-      <button ion-button (click)="dismiss()">
-        <span color="primary" showWhen="ios">Annuler</span>
-        <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>
-      </button>
+      <button ion-button="ion-button" (click)="dismiss()" icon-left>
+          <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> 
+          Fermer
+      </button>      
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

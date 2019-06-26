@@ -14,7 +14,7 @@ import firebase from 'firebase';
   templateUrl: 'about.html'
 })
 export class AboutPage{
- abaout={};
+ abaout:any={};
  loading; 
   devise;
   lang;

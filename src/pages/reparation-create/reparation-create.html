@@ -2,10 +2,10 @@
 <ion-header>
   <ion-navbar>
       <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span color="primary" showWhen="ios">Annuler</span>
-        <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>
-      </button>
+          <button ion-button="ion-button" (click)="dismiss()" icon-left>
+              <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> 
+              Fermer
+          </button>  
     </ion-buttons>
     <ion-title *ngIf="action=='create'">Nouvelle maintenance</ion-title>
     <ion-title *ngIf="action=='edit'">Naintenance</ion-title>
@@ -33,8 +33,8 @@
     <ion-input [(ngModel)]="reparation.km" name="km" type="number"  placeholder=""  #km="ngModel"></ion-input> 
   </ion-item>
   <ion-item >
-  <ion-label color="primary" floating>Pièce</ion-label>
-    <ion-input [(ngModel)]="reparation.description" name="description" type="text" placeholder=" " #description="ngModel"></ion-input> 
+  <ion-label color="primary" floating>Selectionnez une pièce</ion-label>
+    <ion-input (ionFocus)="select()" [(ngModel)]="reparation.description" name="description" type="text" placeholder=" " #description="ngModel"></ion-input> 
   </ion-item>  
  <ion-item >
 <ion-label color="primary" floating>Coût des pièces ({{devise}})</ion-label>
@@ -44,8 +44,8 @@
 <ion-label color="primary" floating>Coût de la main d'oeuvre ({{devise}})</ion-label>
     <ion-input  [(ngModel)]="reparation.coutMainOeuvre" name="coutMainOeuvre" type="number" placeholder="" #coutMainOeuvre="ngModel"></ion-input>
   </ion-item> 
-  <ion-item >
-    <ion-textarea rows="3" [(ngModel)]="reparation.commentaires" name="commentaires" type="text" placeholder="Faites un commentaire" #commentaires="ngModel"></ion-textarea>
+  <ion-item>
+    <ion-textarea rows="1" [(ngModel)]="reparation.commentaires" name="commentaires" type="text" placeholder="Faites un commentaire" #commentaires="ngModel"></ion-textarea>
   </ion-item>  
 </ion-list>
    <div padding>

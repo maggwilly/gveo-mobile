@@ -1,10 +1,9 @@
 import { Component, ViewChild, NgZone } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Events, Platform, MenuController, Nav, AlertController, ModalController, LoadingController, Loading , App} from 'ionic-angular';
+import { Events, Platform, MenuController, Nav, AlertController, ModalController, LoadingController, Loading, App } from 'ionic-angular';
 import { AuthService } from '../providers/auth-service';
 import { TabsPage } from '../pages/tabs/tabs';
-//import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { SettinsPage } from '../pages/settings/settings';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -13,25 +12,24 @@ import { Manager } from '../providers/manager';
 import { VehiculeCreatePage } from '../pages/vehicule-create/vehicule-create';
 import { ExpirePagePage } from '../pages/expire/expire';
 import { Storage } from '@ionic/storage';
-import firebase from 'firebase';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { AppNotify } from '../app/app-notify';
 import { CompteService } from '../providers/compte-service';
-import { AngularFire} from 'angularfire2';
 import { StatPage } from '../pages/stat/stat';
 import { AccordionListPage } from '../pages/accordion-list/accordion-list';
+import { firebaseConfig } from './firebaseconfig';
+import firebase from 'firebase/app';
 const appVersion = '1.2.8';
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = ProcessingPage;// = this.auth.getAuToken()? TabsPage:LoginPage;
+  rootPage: any = ProcessingPage;
   _vehicules: any = [];
   _releves: any[] = [];
-  notificationId: string = firebase.auth().currentUser ? firebase.auth().currentUser.uid : undefined;
-  registrationId=window.localStorage.getItem('registrationId');
+  notificationId: string
+  registrationId = window.localStorage.getItem('registrationId');
   queryText = '';
   authinfo = false
   zone: NgZone;
@@ -40,7 +38,6 @@ export class MyApp {
   abonnement: any;
   constructor(
     public platform: Platform,
-    public af: AngularFire,
     public events: Events,
     public auth: AuthService,
     public manager: Manager,
@@ -56,7 +53,8 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen
   ) {
-
+    firebase.initializeApp(firebaseConfig);
+    this.notificationId = firebase.auth().currentUser ? firebase.auth().currentUser.uid : undefined;
     this.zone = new NgZone({});
     platform.ready().then(() => {
       this.listenToEvent();
@@ -67,35 +65,35 @@ export class MyApp {
   }
 
   registerForNotification() {
-   /* this.fcm.getToken().then(token => {
-          this.registrationId=token;
-          window.localStorage.setItem('registrationId', token)
-
-         });
-         this.fcm.onTokenRefresh().subscribe(token => {
+    /* this.fcm.getToken().then(token => {
            this.registrationId=token;
-             window.localStorage.setItem('registrationId', token)
-         });
-         this.fcm.onNotification().subscribe(data => {
-           if (data.tap) {
-             if (data.vehicle) {
-               let vehicule = {
-                 id: data.vehicle,
-                 matricule: data.matricule,
-                 coutAchat: data.coutAchat,
-                 index0: data.index0,
-                 chauffeur: data.chauffeur
-               }
-               this.rootSet=true;
-               this.checkConnected({ vehicule: vehicule, tab: data.tab});
-             }
-           }
-         });
-         if (!this.rootSet)*/
-    this.checkConnected().then((user:any)=>{
-      if(!user||!window.localStorage.getItem('registrationId'))
-         return
-        this.registration(window.localStorage.getItem('registrationId'), user.uid);
+           window.localStorage.setItem('registrationId', token)
+ 
+          });
+          this.fcm.onTokenRefresh().subscribe(token => {
+            this.registrationId=token;
+              window.localStorage.setItem('registrationId', token)
+          });
+          this.fcm.onNotification().subscribe(data => {
+            if (data.tap) {
+              if (data.vehicle) {
+                let vehicule = {
+                  id: data.vehicle,
+                  matricule: data.matricule,
+                  coutAchat: data.coutAchat,
+                  index0: data.index0,
+                  chauffeur: data.chauffeur
+                }
+                this.rootSet=true;
+                this.checkConnected({ vehicule: vehicule, tab: data.tab});
+              }
+            }
+          });
+          if (!this.rootSet)*/
+    this.checkConnected().then((user: any) => {
+      if (!user || !window.localStorage.getItem('registrationId'))
+        return
+      this.registration(window.localStorage.getItem('registrationId'), user.uid);
     });
   }
 
@@ -134,7 +132,7 @@ export class MyApp {
     }
   }
 
-  openStat(){
+  openStat() {
     this.appCtrl.getRootNav().push(StatPage)
   }
 
@@ -236,43 +234,42 @@ export class MyApp {
 
 
   checkConnected(arg?: any) {
-
-  return new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged((user) => {
-      console.log("user",user);
-      this.zone.run(()=>{
-      if (!user) {
-        this.rootPage = SignupPage
-           resolve();
-      } else {
-        this.authinfo = true;
-        this.storage.get("_vehicules").then(data => {
-          this._vehicules = data ? data : [];
-          this.compteService.getInfo(firebase.auth().currentUser.uid, this.registrationId).then((info) => {
-            this.abonnement = info.abonnement;
-            if (info && !info.displayName || !info.phone || !info.ville || !info.email || !info.pays)
-              this.profilAlert();
-            if (this.isExpired(this.abonnement)) {
-              this.nav.setRoot(ExpirePagePage, { abonnement: this.abonnement });
-              resolve(user);
-              return;
-            }
-            this.manager.getVehicules(user.uid).then(vehicules => {
-              this._vehicules = vehicules;
-              this.storage.set("_vehicules", vehicules)           
-            }, error => {
-              this.rootPage = ProcessingPage;
-            })            
-          this.nav.setRoot(TabsPage, arg);
-            resolve(user);    
-          }, error => {
-            this.rootPage = ProcessingPage;
-           })                 
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged((user) => {
+        this.zone.run(() => {
+          if (!user) {
+            this.rootPage = SignupPage
+            resolve();
+          } else {
+            this.authinfo = true;
+            this.storage.get("_vehicules").then(data => {
+              this._vehicules = data ? data : [];
+              this.compteService.getInfo(firebase.auth().currentUser.uid, this.registrationId).then((info) => {
+                this.abonnement = info.abonnement;
+                if (info && !info.displayName || !info.phone || !info.ville || !info.email || !info.pays)
+                  this.profilAlert();
+                if (this.isExpired(this.abonnement)) {
+                  this.nav.setRoot(ExpirePagePage, { abonnement: this.abonnement });
+                  resolve(user);
+                  return;
+                }
+                this.manager.getVehicules(user.uid).then(vehicules => {
+                  this._vehicules = vehicules;
+                  this.storage.set("_vehicules", vehicules)
+                }, error => {
+                  this.rootPage = ProcessingPage;
+                })
+                this.nav.setRoot(TabsPage, arg);
+                resolve(user);
+              }, error => {
+                this.rootPage = ProcessingPage;
+              })
+            })
+          }
         })
-      }})
-    }, error => { });
-  })
-}
+      }, error => { });
+    })
+  }
 
 
   showError() {
@@ -322,13 +319,13 @@ export class MyApp {
   registration(registrationId: any, info?: any) {
     this.registrationId = registrationId;
     console.log(registrationId);
-    
-    if(!registrationId||registrationId=='null')
-        return
-      this.manager.update('registration', { id: registrationId, registrationId: registrationId, appVersion: appVersion, info: info }).then((data) => {
-      }, error => {
-        this.appNotify.onError({ message: 'problème de connexion.' });
-      })
+
+    if (!registrationId || registrationId == 'null')
+      return
+    this.manager.update('registration', { id: registrationId, registrationId: registrationId, appVersion: appVersion, info: info }).then((data) => {
+    }, error => {
+      this.appNotify.onError({ message: 'problème de connexion.' });
+    })
   }
 
   profilAlert() {

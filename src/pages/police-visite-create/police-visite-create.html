@@ -8,10 +8,10 @@
   <ion-navbar>
     <ion-title>Enrégistrement</ion-title>
         <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span color="primary" showWhen="ios">Annuler</span>
-        <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>
-      </button>
+            <button ion-button="ion-button" (click)="dismiss()" icon-left>
+                <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> 
+                Fermer
+            </button>  
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -20,7 +20,7 @@
    <h2 *ngIf="objet=='visite'">Visite technique</h2>
    <h2 *ngIf="objet=='police'">Police d'assurance</h2>
   </ion-list-header>
-  <form #form="ngForm" (ngSubmit)="onSubmit(ngForm)"  novalidate>
+  <form #form="ngForm" (ngSubmit)="onSubmit()"  novalidate>
 <ion-list >
   <ion-item>
   <ion-label color="primary" floating><span *ngIf="objet=='police'">Date de souscription</span> <span *ngIf="objet=='visite'">Date de la visite</span></ion-label>

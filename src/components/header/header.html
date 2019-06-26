@@ -7,7 +7,7 @@
      </ion-title>
       <small *ngIf="displayed && displayed.marque">{{displayed.marque.nom}}, {{displayed.description}}</small>
     <ion-buttons end *ngIf="displayed">
-    <button ion-button small  (click)="createReleve()" style="min-width: 60px;"*ngIf="displayed.lastReleve" [color]="displayed.lastReleve.color" outline>
+    <button ion-button small  (click)="createReleve()" positionV="bottom" tooltip="Cliquez pour enrégistrer le nouveau kilométrage" style="min-width: 60px;"*ngIf="displayed.lastReleve" [color]="displayed.lastReleve.color" outline>
       <span  >{{displayed.lastReleve.km}} KM</span>
     </button>
     <button ion-button (click)="openStat()"icon-only  *ngIf="statshow" showWhen="android"  clear>
@@ -19,8 +19,8 @@
     </button>
     </ion-buttons>
   </ion-navbar>
-  <div text-center no-padding class="tool-bar">
+ <!-- <div text-center no-padding class="tool-bar">
      <span style="color:#fff" text-center>
       {{text}}
      </span>   
-  </div>
+  </div>-->

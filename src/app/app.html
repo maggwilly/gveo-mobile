@@ -4,13 +4,13 @@
     <ion-navbar>
        <ion-title>GVEO</ion-title>
        <ion-buttons end>
-        <button ion-button  icon-only  (click)="setRoot('settings')">
+        <button ion-button  icon-only positionV="bottom" tooltip="Règlages"  (click)="setRoot('settings')">
             <ion-icon  name="settings"></ion-icon>
         </button>
-        <button ion-button (click)="openStat()"icon-only  showWhen="core"  clear>
+        <button ion-button (click)="openStat()"icon-only positionV="bottom" tooltip="Statistiques globales"  showWhen="core"  clear>
             <ion-icon name="ios-pie-outline"></ion-icon>
           </button>
-          <button ion-button (click)="openRecap()" icon-only showWhen="core"  clear >
+          <button ion-button (click)="openRecap()" positionV="bottom" tooltip="Récapitulatis des opérations" icon-only showWhen="core"  clear >
             <ion-icon name="md-clipboard"></ion-icon>
             <ion-badge color="danger"></ion-badge>
           </button>
@@ -19,7 +19,7 @@
   </ion-header>
  <ion-content >
     <div showWhen="core" padding>
-        <br><br><br>
+        <br><br>
     </div> 
 <ion-list  *ngIf="_vehicules && _vehicules.length>0" padding-top> 
    
@@ -29,7 +29,7 @@
                    (ionInput)="search()"
                    placeholder="rechercher un véhicule">
     </ion-searchbar>   
-   <ion-item *ngFor="let vehicule of _vehicules" (click)="select(vehicule)" text-wrap [hidden]="vehicule.hide" last-releve [displayed]="vehicule">
+   <ion-item *ngFor="let vehicule of _vehicules" (click)="select(vehicule)" text-wrap [hidden]="vehicule.hide">
     <div item-left>
        <img [src]="vehicule.marque.logo" [alt]="">
     </div>
@@ -48,7 +48,7 @@
  </div> 
  </ion-list>
      <ion-fab left bottom *ngIf="_vehicules && _vehicules.length>0"  (click)="setRoot('create')">
-    <button ion-fab color="primary" mini ><ion-icon name="add"></ion-icon></button>
+    <button ion-fab color="primary"><ion-icon name="add"  positionV="top" tooltip="Cliquez pour enrégistrer un nouveau véhicule"></ion-icon></button>
   </ion-fab> 
   </ion-content>
   

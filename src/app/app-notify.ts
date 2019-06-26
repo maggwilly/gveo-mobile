@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {  ToastController, ToastOptions } from 'ionic-angular';
 
 /**
@@ -9,11 +9,7 @@ import {  ToastController, ToastOptions } from 'ionic-angular';
  * @version 0.3
  * @todo add some styles...
  */
-@Component({
-  selector: 'app-notify',
-  templateUrl: 'app-notify.html'
-})
-
+@Injectable()
 export class AppNotify {
 
   constructor(

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Events, NavController, NavParams, ViewController, AlertController, } from 'ionic-angular';
+import { Events, NavController, NavParams, ViewController, AlertController,ModalController } from 'ionic-angular';
 import { DatePipe } from "@angular/common";
 import { AppNotify } from '../../app/app-notify';
 import { Manager } from '../../providers/manager';
@@ -30,6 +30,7 @@ export class ReparationCreatePage {
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
+    public modalCtrl: ModalController,  
     public alertCtrl: AlertController,
     public auth: AuthService,
     public appNotify: AppNotify,
@@ -64,13 +65,26 @@ export class ReparationCreatePage {
     });
   }
 
+
+  select(){
+    let modal = this.modalCtrl.create('PiecesPage',{systeme:this.systeme.id});
+    modal.onDidDismiss(data => {
+      console.log(data);
+         if(!data)
+           return
+         this.reparation.description=data.nom;
+    });
+    modal.present();
+  }
+
+
   dismiss(data?: any) {
     this.viewCtrl.dismiss(data);
   }
 
   onSubmit() {
     this.submitted = true;
-    switch (this.action) {
+    switch (this.action){
       case 'create':
         let date = new Date();
         this.reparation.year = date.getFullYear();

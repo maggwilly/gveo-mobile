@@ -8,10 +8,10 @@
 
   <ion-navbar>
       <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span color="primary" showWhen="ios">Annuler</span>
-        <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>
-      </button>
+          <button ion-button="ion-button" (click)="dismiss()" icon-left>
+              <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> 
+              Fermer
+          </button>  
     </ion-buttons>    
     <ion-title *ngIf="operation "> {{operation.operation}}</ion-title>
   </ion-navbar>
@@ -46,9 +46,8 @@
     <ion-input [(ngModel)]="lastReparation.cout" name="cout" type="number" placeholder="" #cout="ngModel"></ion-input>
   </ion-item>
   <ion-item >
-    <ion-textarea rows="3" [(ngModel)]="lastReparation.commentaires" name="commentaires" type="text" placeholder="Faites un commentaire" #commentaires="ngModel"></ion-textarea>
+    <ion-textarea rows="1" [(ngModel)]="lastReparation.commentaires" name="commentaires" type="text" placeholder="Faites un commentaire" #commentaires="ngModel"></ion-textarea>
   </ion-item>  
-
  </ion-list>
    <div padding>
   <button ion-button  block color="primary"   icon-right (click)="onSubmit()" [disabled]="isInvalid() || submitted" type="submit"  [ngClass]="setClass()">

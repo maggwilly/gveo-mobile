@@ -2,6 +2,11 @@
   <header-component [text]="'Entretien préventif'" [displayed]="displayed" recapshow="true"></header-component>  
 </ion-header>
 <ion-content >
+  <ion-card text-center padding>
+     <h1>ELMENTS D'ENTRETIEN</h1>
+     <ion-card-content> Enrégistrez systematiquement chaque opération d'entretien du véhicule, avec le kilométrage à date afin  que le systeme puisse vous rappeler les prochaines échéances.</ion-card-content>
+  </ion-card>
+ 
 <ion-list  *ngIf="displayed"> 
    <ion-item *ngFor="let operation of operations" (click)="showPrevision(operation)" text-wrap last-reparation [displayed]="displayed" [operation]="operation">
      <ion-avatar  item-left>

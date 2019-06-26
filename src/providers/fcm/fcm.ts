@@ -2,7 +2,7 @@
 
 import { Platform } from 'ionic-angular'
 import { Injectable } from '@angular/core';
-import { Firebase } from '@ionic-native/firebase';
+import { Firebase } from '@ionic-native/firebase/ngx';
 /*
   Generated class for the FcmProvider provider.
 
@@ -22,7 +22,7 @@ export class FcmProvider {
     this.platform.ready().then(() => {
     if (this.platform.is('android') || this.platform.is('ios')) {
       this.firebaseNative.setScreenName(name);
-      this.firebaseNative.logEvent(name+'_opened', { page: name })
+      //this.firebaseNative.logEvent(name+'_opened', { page: name })
     }
     });
   }
@@ -30,7 +30,7 @@ export class FcmProvider {
   logEvent(name,data) {
     this.platform.ready().then(() => {
     if (this.platform.is('android') || this.platform.is('ios')) {
-      this.firebaseNative.logEvent(name, data)
+     this.firebaseNative.logEvent(name, data)
     }
     });
   }
@@ -44,8 +44,6 @@ export class FcmProvider {
   }  
 
   onNotification() {
-    console.log('Nofified');
-    
     return this.firebaseNative.onNotificationOpen();
   }  
   

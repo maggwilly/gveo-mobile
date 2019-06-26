@@ -56,9 +56,10 @@ _releves;
       this.lastReparation = this.navParams.get('lastReparation');
       this.lastReparation.dateSave = datePipe.transform(this.lastReparation.dateSave, 'yyyy-MM-dd'); 
     }
-    this.storage.get('_displayed').then(data => {
+    this.lastReparation.km=this.displayed.lastReleve ? this.displayed.lastReleve.km : 0
+   /* this.storage.get('_displayed').then(data => {
       this.lastReparation.km = data && data.lastReleve ? data.lastReleve.km : 0
-    });    
+    });*/    
   }
 
 

@@ -8,11 +8,17 @@
           </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content >
+    <ion-card text-center padding>
+        <h1>RECAPITULATIF DES TÂCHES D'ENTRETIEN</h1>
+        <ion-card-content>Tâches d'entretien à efectuer pour chaque vehicule afin de garder le flote dans un état de fonctionnel.</ion-card-content>
+     </ion-card> 
+<div padding>
   <accordion-list *ngFor="let vehicule of _vehicules"
                   [displayed]="vehicule"
                   textColor="#FFF"
                   hasMargin="false"
-                  headerColor="#FFF" >
+                  headerColor="#FFF" [hidden]="!vehicule.todos||!vehicule.todos.length">
   </accordion-list>
+</div>
 </ion-content>

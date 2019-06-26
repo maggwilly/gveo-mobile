@@ -3,6 +3,11 @@
   <header-component [text]="'Les sous-systèmes'" [displayed]="displayed"></header-component>  
 </ion-header>
 <ion-content>
+    <ion-card text-center padding>
+        <h1>ELMENTS DE MAINTENANCE</h1>
+        <ion-card-content>Enregistrer toutes les opérations de maintenance quelque soit leur envergure et leur coût afin d'avoir un historique des repararations.</ion-card-content>
+     </ion-card>
+     
 <ion-list inset *ngIf="systemes &&  displayed" > 
    <ion-item *ngFor="let systeme of systemes" (click)="newReparation(systeme)" text-wrap no-padding lisf-of-maintenance [displayed]="displayed" [systeme]="systeme">
     <ion-avatar item-left>

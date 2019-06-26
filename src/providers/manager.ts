@@ -35,30 +35,12 @@ export class Manager {
       .then(response => response.json());
   }
 
-  getEntity(entityName) {
-    return this.http.get(this.baseUrl + '/utils/' + entityName, { headers: this.getHeader() })
+  getEntity(entityName,id?:any) {
+    return this.http.get(this.baseUrl + '/utils/' + entityName+'?id='+id, { headers: this.getHeader() })
       .toPromise()
       .then(response => response.json());
   }
 
-  getSystemes() {
-    return this.http.get('assets/data/systemes.json')
-      .toPromise()
-      .then(response => response.json());
-  }
-
-  getOperations() {
-    return this.http.get('assets/data/operations.json')
-      .toPromise()
-      .then(response => response.json());
-  }
-
-
-  getMarques() {
-    return this.http.get('assets/data/marques.json')
-      .toPromise()
-      .then(response => response.json());
-  }
 
   delete(entity, data) {
     return this.http.delete(this.baseUrl + '/utils/' + entity +'/'+data.id + '/delete?id='+ data.id, { headers: this.getHeader() })
@@ -67,14 +49,12 @@ export class Manager {
   }
 
   create(entity, element) {
-    console.log(element);
     return this.http.post(this.baseUrl + '/utils/' + entity + '/create', JSON.stringify(element), { headers: this.getHeader() })
       .toPromise()
       .then(response => response.json());
   }
 
   update(entityName, data: any) {
-
     return this.http.post(this.baseUrl + '/utils/' + entityName +'/'+data.id +'/update?id='+ data.id, JSON.stringify(data), { headers: this.getHeader() })
       .toPromise()
       .then(response => response.json());
@@ -82,15 +62,7 @@ export class Manager {
   
 
 
-  /*Recherche la date de derniere mise a jour*/
-  getAbonnementTest(uid: any) {
-    return this.http.get('assets/data/abonnement.json', { headers: this.headers })
-      .toPromise()
-      .then(response => response.json());
-  }
-
   getVisiteTechnique(vehicule: number) {
-    console.log(this.baseUrl + '/utils/visite/last?vehicule=' + vehicule);
     return this.http.get(this.baseUrl + '/utils/visite/last?vehicule=' + vehicule, { headers: this.getHeader() })
       .toPromise()
       .then(response => response.json());
@@ -120,6 +92,8 @@ export class Manager {
       .toPromise()
       .then(response => response.json());
   }
+
+
   getStatistic(vehicule: number = 0, start: any, end:any ,periode?:any) {
     return this.http.get(this.baseUrl + '/utils/couts?vehicule=' + vehicule + '&startdate=' + start + '&enddate=' + end + '&periode=' + periode + '&uid=' + firebase.auth().currentUser.uid, { headers: this.getHeader() })
       .toPromise()
@@ -127,7 +101,6 @@ export class Manager {
   }
 
   getTodos(vehicule: number = 0) {
-    console.log(this.baseUrl + '/utils/operation/todos?vehicule=' + vehicule + '&uid=' + firebase.auth().currentUser.uid)
     return this.http.get(this.baseUrl + '/utils/operation/todos?vehicule=' + vehicule + '&uid=' + firebase.auth().currentUser.uid, { headers: this.getHeader() })
       .toPromise()
       .then(response => response.json());

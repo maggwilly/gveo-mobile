@@ -9,13 +9,12 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <div text-center no-padding class="tool-bar">
-    <span style="color:#fff" text-center>
-     {{title}}
-    </span>
-  </div>
 </ion-header>
 <ion-content  [periode]="periode" [startDate]="startDate" [endDate]="endDate" [displayed]="displayed" statistic>
+    <ion-card text-center padding>
+        <h1>STATISTIQUES GLOBALES D'UTILISATION ({{title}})</h1>
+        <ion-card-content>Statistiques globales de l'utilisation de tous vos véhicules en un seul endroit.</ion-card-content>
+     </ion-card>
   <ion-grid [hidden]="!displayed">
     <ion-row justify-content-center>
       <ion-col col-sm-12 col-xl-6 col-md-12 col-lg-6 *ngIf="displayed">

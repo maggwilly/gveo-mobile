@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { AuthService} from './auth-service';
 import {TranslateService} from 'ng2-translate';
-import { HTTP } from 'ionic-native';
+
 
 @Injectable()
 export class Read {
@@ -29,22 +29,19 @@ export class Read {
       }
 
 getHelp(local=this.translateService.getBrowserLang()) {
-       return HTTP.get('assets/data/help.json',  {local:local}, {headers: this.headers})
-     .then(res =>res.data)
+       return this.http.get('assets/data/help.json')
+       .toPromise()
+     .then(res =>res)
      .catch(error => {
-         console.log(error.status);
-         console.log(error.error); // error message as string
-         console.log(error.headers);
      });     
       }
 
     getCGU(local=this.translateService.getBrowserLang()) {
-   return HTTP.get('assets/data/cgu.json',  {local:local}, {headers: this.headers})
-     .then(res =>res.data)
+   return this.http.get('assets/data/cgu.json')
+   .toPromise()
+     .then(res =>res)
      .catch(error => {
-         console.log(error.status);
-         console.log(error.error); // error message as string
-         console.log(error.headers);
+
      });     
       }      
   private handleError(error: any): Promise<any> {

@@ -33,21 +33,13 @@ _maintenances:any[]=[];
    public events: Events,) {
    this.systeme=this.navParams.get('systeme');
     this.displayed = this.navParams.get('displayed')
-    //this.updateSchedule();
-   this.systeme.cout=0;
+    this.updateSchedule();
+  // 
    ;
   }
 
-
-  ngAfterViewInit() {
-     //this.listenToEvents();
-   
-  }
-
-
-
-
 updateSchedule() {
+  this.systeme.cout=0;
   this.manager.getMaintenances(this.displayed.id, this.systeme.id).then((data) => {
     this.systeme.maintenances = data ? data : [];
     this.systeme.maintenances.forEach(maintenance => {

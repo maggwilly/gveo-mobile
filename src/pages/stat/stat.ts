@@ -96,7 +96,7 @@ export class StatPage {
   }
 
   listenToEvents() {
-    this.events.subscribe('displayed:changed', (data) => {
+  /*  this.events.subscribe('displayed:changed', (data) => {
       this.displayed = data;
       this.displayed.loaded = false;
       this.fethStatistic();
@@ -105,7 +105,7 @@ export class StatPage {
     this.events.subscribe('devise:changed', () => {
       this.lang = this.auth.getLang();
       this.devise = this.auth.getDevise();
-    });
+    });*/
 
   }
 

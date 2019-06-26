@@ -15,7 +15,9 @@
     </ion-buttons>    
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content >
+
+ <div padding>   
   <ion-list  *ngIf="_vehicules && _vehicules.length>0" magging-top>     
     <ion-searchbar color="primary"
                   [(ngModel)]="queryText"
@@ -30,5 +32,6 @@
    <p>{{vehicule.chauffeur}}</p> 
   <ion-badge  color="danger" item-right>2</ion-badge>
  </ion-item> 
-</ion-list> 
+</ion-list>
+</div>  
 </ion-content>

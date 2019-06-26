@@ -7,7 +7,6 @@ import { TabsPage } from '../tabs/tabs';
 import { ResetPasswordPage } from '../reset-password/reset-password';
 import firebase from 'firebase';
 import {
-
   FormBuilder,
   FormGroup,
   FormControl,
@@ -71,7 +70,6 @@ export class LoginPage {
     return firebase.auth().signInWithEmailAndPassword(this.usercreds.value.login, this.usercreds.value.password).then(() => {
       //this.loading.dismiss();
         this.events.publish('login:success',this.loading);
-
     })
       .catch((error) => {
         this.error = error;
